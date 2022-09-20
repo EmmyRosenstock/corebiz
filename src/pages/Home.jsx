@@ -11,7 +11,7 @@ const Home = ({items,addToCart,showLoading}) => {
   return (
     <div className='relative z-[5] '>
      
-      <div className='ml-[-500px] px-4 py-3 relative z-[5]'>
+      <div className='ml-[-500px] px-4 py-10 relative z-[5]'>
       
       <CarouselInfor/>
       

@@ -9,7 +9,7 @@ const Cart = ({openCart,toggleCart,cart,removeFromCart,incrementItem,total }) =>
   return (
     <>
      
-    <div className={`w-full left-0 fixed h-[100vh]   px-3 top-0  mx-auto py-3 border-6 border-slate-600  flex justify-center items-center transition-all duration-300 ease-linear ${openCart ? 'z-40 bg-[#0000004b]':'' } `}>
+    <div className={`w-full left-0 fixed h-[100vh]   px-3 top-80  mx-auto py-3 border-6 border-slate-600  flex justify-center items-center transition-all duration-300 ease-linear ${openCart ? 'z-40 bg-[#0000004b]':'' } `}>
 
        <div className={`w-[96%] md:w-[800px] bg-whitetext h-[60vh] border-t-4 border-t-slate-50 overflow-y-auto mt-[30px] shadow-lg shadow-black relative  transition-all duration-1000 ease-linear ${openCart ? 'translate-y-0':'translate-y-[2000px]'}`}>
        <div className='w-full h-[40px] bg-slate-900  border-b-2 border-slate-50 sticky top-0'>

@@ -3,8 +3,7 @@ import { BrowserRouter,Routes,Route }  from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import axios from './helpers/apiClient'
-
-import CarouselInfor from './components/Carrouselinfor';
+import Details from './pages/Details'
 
 const App = () => { 
  
@@ -27,8 +26,8 @@ const[backup,setBackUp]=useState([])
 
     const fetchProducts = () => {
       setShowLoading(true)
-        const res =axios.get('/products')
-        .then(res =>{
+        const res=axios.get('/products')
+        .then(res=>{
             setItems(res.data)
             setBackUp(res.data)
             setIsLoading(false)
@@ -39,39 +38,38 @@ const[backup,setBackUp]=useState([])
             setIsLoading(false)
         })
     }
-    
+   
 
     const[cart,setCart]=useState([])
-  
+
     const addToCart = (item) => {
-        
-        const itemInCart = cart.find(itemInCart => itemInCart.productId === item.productId)       
+ 
+        const itemInCart = cart.find(itemInCart => itemInCart.id === item.id)       
         if(!itemInCart){
           setCart([...cart,item])     
         }
        else{
-            setCart(cart.map(itemInCart => itemInCart.productId === item.productId ? {...itemInCart,count:itemInCart.count+1} : itemInCart))    
+            setCart(cart.map(itemInCart => itemInCart.id === item.id ? {...itemInCart,count:itemInCart.count+1} : itemInCart))    
        }     
     }   
  
 
-  
-    const removeFromCart = (productId) => { 
-      const itemInCart = cart.find(itemInCart => itemInCart.productId === productId)
+    const removeFromCart = (id) => { 
+      const itemInCart = cart.find(itemInCart => itemInCart.id === id)
       if(itemInCart.count > 1){
-        setCart(cart.map(itemInCart => itemInCart.productId === productId ? {...itemInCart,count:itemInCart.count-1} : itemInCart))    
-      
+        setCart(cart.map(itemInCart => itemInCart.id === id ? {...itemInCart,count:itemInCart.count-1} : itemInCart))    
+        // setCart([...cart])
       }
        else{
-        setCart(cart.filter(item=>item.productId!==productId))
+        setCart(cart.filter(item=>item.id!==id))
        }
     }
-  
+ 
     const clearCart = () => {
         setCart([])
     }
    
-
+    //search products
     const[search,setSearch] = useState('')
     const handleSearch = (e) => {
         setSearch(e.target.value)
@@ -107,10 +105,9 @@ const[backup,setBackUp]=useState([])
   return (
     <BrowserRouter>
     <Navbar search={search} handleSearch ={handleSearch} cart={cart} openCart={openCart} toggleCart={toggleCart} removeFromCart={removeFromCart } incrementItem={incrementItem} total={total} />
-
     <Routes>
-      <Route path="/" element={<Home items={items} isLoading={isLoading} addToCart={addToCart}  />}/>
-  
+      <Route path="/" element={<Home items={items} isLoading={isLoading}   fetchProducts={fetchProducts} addToCart={addToCart} showLoading={showLoading} />}/>
+      <Route path="/details/:id" element={<Details addToCart={addToCart} showLoading={showLoading}/>}/>
     </Routes>
     </BrowserRouter>
   )

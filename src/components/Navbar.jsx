@@ -1,5 +1,5 @@
 import React from 'react'
-import {AiOutlineShoppingCart,AiOutlineHome} from 'react-icons/ai'
+
 import {Link} from 'react-router-dom'
 import {BsSearch,BsShopWindow} from 'react-icons/bs'
 import lupa from '../assets/lupa.svg'
@@ -22,9 +22,9 @@ const Navbar = ({search,handleSearch,searchProducts,cart,openCart,toggleCart,rem
                      <div className='rounded-full bg-grayball w-[9px] h-[9px] mt-[35px]'/>
         </div>
         
-            <div className='  md:w-[100%] flex justify-center items-center'>
-              <input type="search" className=' px-1 w-[718px] border-b-2 relative text-nunito' value={search} placeholder='O que está procurando?'  name="search" onChange={handleSearch } />
-              <img src={lupa} className='hidden md:block text-2xl cursor-pointer ml-[-30px] z-20 text-slate-300 mr-[10px]' onClick={()=>searchProducts(search)}/></div>       
+        <div className='w-full md:w-[40%] flex justify-center items-center'>
+          <input type="search" className='bg-slate-100 px-1 w-full focus:border-none focus:bg-slate-200 focus:outline-none' value={search}  name="search" onChange={handleSearch } />
+          <BsSearch className='hidden md:block text-2xl cursor-pointer ml-2 text-slate-300' onClick={()=>searchProducts(search)}/></div>
              <div className='md:w-[200px] gap-1 mt-[10px] flex justify-center items-center'>
               <img src={user} className='w-[18px] h-[18px]' />
               <span className='text-nunito text-graytext'>Minha conta</span>
