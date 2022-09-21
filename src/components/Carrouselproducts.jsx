@@ -29,6 +29,8 @@ const settings = {
         slidesToShow: 3,
         slidesToScroll: 4,
         initialSlide: 1,
+        arrow:false,
+        dots:true
       },
     },
     {
@@ -36,6 +38,8 @@ const settings = {
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
+        arrow:false,
+        dots:true
       },
     },
   ],
